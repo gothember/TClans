@@ -1,6 +1,7 @@
 package com.example.tclan;
 
 import com.example.tclan.commands.ClanCommand;
+import com.example.tclan.economy.EconomyManager;
 import com.example.tclan.managers.ClanManager;
 import com.example.tclan.placeholders.ClanPlaceholders;
 import com.example.tclan.utils.ColorUtils;
@@ -12,6 +13,7 @@ public class TClan extends JavaPlugin {
 
     private static TClan instance;
     private ClanManager clanManager;
+    private EconomyManager economyManager;
 
     @Override
     public void onEnable() {
@@ -21,6 +23,20 @@ public class TClan extends JavaPlugin {
         saveDefaultConfig(); // Copies config.yml from JAR if not present
         getConfig().options().copyDefaults(true);
         saveConfig(); // Saves the config file, ensuring defaults are written if it was newly created
+
+        // Initialize EconomyManager
+        economyManager = new EconomyManager(this);
+        if (getConfig().getBoolean("economy.enabled", true)) {
+            if (economyManager.setupEconomy()) {
+                getLogger().info("Vault found and economy hooked successfully!");
+            } else {
+                getLogger().warning("Vault not found or no economy provider, economy features will be disabled (even if enabled in config).");
+                // No need to set economyManager to null, its isEconomyEnabled() will handle it.
+            }
+        } else {
+            getLogger().info("Economy features are disabled via config.yml.");
+        }
+
 
         // Plugin startup logic
         this.clanManager = new ClanManager();
@@ -56,6 +72,10 @@ public class TClan extends JavaPlugin {
         return clanManager;
     }
 
+    public EconomyManager getEconomyManager() {
+        return economyManager;
+    }
+
     public static TClan getInstance() {
         return instance;
     }
@@ -74,6 +94,7 @@ public class TClan extends JavaPlugin {
             for (int i = 0; i < replacements.length; i += 2) {
                 String placeholder = "{" + replacements[i] + "}";
                 String value = replacements[i + 1];
+                if (value == null) value = "null"; // Prevent NPE from .replace if a replacement value is null
                 message = message.replace(placeholder, value);
             }
         }
