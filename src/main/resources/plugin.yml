@@ -1,0 +1,12 @@
+name: TClan
+version: 1.0
+main: com.example.tclan.TClan
+api-version: 1.16
+author: Jules (AI Assistant)
+description: A basic clan plugin.
+softdepend: [PlaceholderAPI]
+commands:
+  clan:
+    description: Main command for TClan.
+    usage: /clan <subcommand> [args]
+    aliases: [c]

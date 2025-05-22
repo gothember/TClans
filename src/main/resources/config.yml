@@ -1,0 +1,64 @@
+# TClan Plugin Configuration
+
+# The cost to create a new clan.
+# Set to 0 to make clan creation free.
+clan_creation_cost: 1000.0
+
+# Messages used throughout the plugin.
+# You can use standard Bukkit color codes (&) and HEX color codes (&#RRGGBB).
+# Placeholders like {clan_name}, {player_name}, {amount}, {balance} will be replaced with dynamic values.
+messages:
+  # General messages
+  clan_created: "&#00FF00{clan_name} &#22AA22created successfully!"
+  clan_home_set: "&#00FF00Clan home set!"
+  teleported_to_clan_home: "&#00FF00Teleported to clan home."
+  clan_balance: "&#66FF66Clan Balance: &#FFFF00{balance}"
+  invest_success: "&#66FF66Invested &#FFFF00{amount} &#66FF66into the clan. New balance: &#FFFF00{balance}"
+  withdraw_success: "&#66FF66Withdrew &#FFFF00{amount} &#66FF66from the clan. New balance: &#FFFF00{balance}"
+  player_invited: "&#66FF66Player &#FFFF00{player_name} &#66FF66has been added to your clan."
+  you_were_invited: "&#66FF66You have been added to clan &#FFFF00{clan_name}!"
+  members_header: "&#FFFF00--- Clan: {clan_name} ---"
+  members_leader: "&#FFEE00Leader: {leader_name}"
+  members_list: "&#FFEE00Members: {members_list}"
+  invite_not_leader: "&#FFCC00Only the clan leader or designated officers can invite new members." # Example for future permissions
+  invite_self: "&#FFCC00You cannot invite yourself."
+  command_only_by_player: "&#FF0000This command can only be run by a player."
+
+  # Usage messages
+  usage_header: "&#FFFF00--- TClan Commands ---"
+  usage_create: "&#FFEE00/clan create <name> &#AAAAAA- Creates a new clan."
+  usage_sethome: "&#FFEE00/clan sethome &#AAAAAA- Sets your clan's home (leader only)."
+  usage_home: "&#FFEE00/clan home &#AAAAAA- Teleports you to your clan's home."
+  usage_members: "&#FFEE00/clan members &#AAAAAA- Lists members of your clan."
+  usage_balance: "&#FFEE00/clan balance &#AAAAAA- Shows your clan's balance."
+  usage_invest: "&#FFEE00/clan invest <value> &#AAAAAA- Invests money into your clan."
+  usage_withdraw: "&#FFEE00/clan withdraw <value> &#AAAAAA- Withdraws money from clan (leader only)."
+  usage_invite: "&#FFEE00/clan invite <player> &#AAAAAA- Invites a player to your clan (leader only)."
+  usage_generic_create: "&#FFCC00Usage: /clan create <name>"
+  usage_generic_invest: "&#FFCC00Usage: /clan invest <value>"
+  usage_generic_withdraw: "&#FFCC00Usage: /clan withdraw <value>"
+  usage_generic_invite: "&#FFCC00Usage: /clan invite <player>"
+
+
+  # Error messages
+  error_not_in_clan: "&#FF0000You are not in a clan."
+  error_already_in_clan: "&#FF0000You are already in a clan."
+  error_clan_name_taken: "&#FF0000Clan name &#FFFF00{clan_name} &#FF0000is already taken or invalid."
+  error_must_be_leader: "&#FF0000You must be the leader of the clan to do this."
+  error_must_be_leader_sethome: "&#FF0000Only the clan leader can set the clan home." # Specific for sethome
+  error_must_be_leader_withdraw: "&#FF0000Only the clan leader can withdraw funds." # Specific for withdraw
+  error_must_be_leader_invite: "&#FF0000Only the clan leader can invite new members." # Specific for invite
+  error_insufficient_funds_clan: "&#FF0000The clan does not have enough money for this transaction. Current balance: &#FFFF00{balance}"
+  error_insufficient_funds_player: "&#FF0000You do not have enough money to create a clan. Cost: &#FFFF00{cost}" # For player's balance
+  error_player_not_online: "&#FF0000Player &#FFFF00{player_name} &#FF0000is not online."
+  error_player_already_in_clan: "&#FF0000Player &#FFFF00{player_name} &#FF0000is already in another clan."
+  error_invalid_amount: "&#FF0000Invalid amount. Please enter a number."
+  error_amount_must_be_positive: "&#FF0000Amount must be positive."
+  error_no_clan_home_set: "&#FFCC00Your clan does not have a home set. The leader can set it using /clan sethome."
+  error_economy_not_implemented_cost: "&#FFFF00Clan creation costs &#00FF00{cost}. &#FFCC00(Economy interaction not yet fully implemented)"
+  error_generic: "&#FF0000An unexpected error occurred."
+
+  # Placeholder for other messages as needed
+  # Example:
+  # success_generic: "&#00FF00Operation successful!"
+  # permission_denied: "&#FF0000You do not have permission to use this command."
